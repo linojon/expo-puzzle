@@ -103,19 +103,27 @@ export default class Game extends React.Component {
         {
           text: 'Quit',
           style: 'destructive',
-          onPress: this.RequestTransitionOut,
+          onPress: this.requestTransitionOut,
         },
       ],
     );
   };
 
+  handlePressSolve = () => {
+    const { puzzle } = this.props;
+    puzzle.board.sort();
+    // todo refresh board
+  };
+
   handleBoardTransitionOut = async () => {
     const { onQuit } = this.props;
 
+    console.log('in handleBoardTransitionOut');
     await configureTransition(() => {
       this.setState({ transitionState: State.WillTransitionOut });
     });
 
+    console.log('calling onQuit');
     onQuit();
   };
 
@@ -149,13 +157,17 @@ export default class Game extends React.Component {
                 image={image}
                 previousMove={previousMove}
                 teardown={
-                  transitionState === State.requestTransitionOut
+                  transitionState === State.RequestTransitionOut
                 }
                 onMoveSquare={this.handlePressSquare}
                 onTransitionOut={this.handleBoardTransitionOut}
                 onTransitionIn={this.handleBoardTransitionIn}
               />
               <Button title={'Quit'} onPress={this.handlePressQuit} />
+              {/* <Button
+                title={'Solve'}
+                onPress={this.handlePressSolve}
+              /> */}
             </View>
           )}
         </View>

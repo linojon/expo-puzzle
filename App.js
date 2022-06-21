@@ -43,7 +43,7 @@ export default class App extends React.Component {
     this.setState({ image });
   }
 
-  handleChangeSize = size => {
+  handleChangeSize = (size) => {
     this.setState({ size });
   };
 
@@ -53,11 +53,12 @@ export default class App extends React.Component {
     this.setState({ puzzle: createPuzzle(size) });
   };
 
-  handleGameChange = puzzle => {
+  handleGameChange = (puzzle) => {
     this.setState({ puzzle });
   };
 
   handleQuit = () => {
+    console.log('in handleQuit');
     this.setState({ puzzle: null, image: null });
 
     this.preloadNextImage();

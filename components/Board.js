@@ -202,6 +202,7 @@ export default class Board extends React.PureComponent {
     }
 
     if (shouldTeardown) {
+      console.log('componentDidUpdate: shouldTeardown');
       await this.animateAllSquares(false);
 
       this.setState({ transitionState: State.DidTransitionOut });
