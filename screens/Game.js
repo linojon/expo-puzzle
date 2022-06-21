@@ -77,6 +77,7 @@ export default class Game extends React.Component {
     onChange(updated);
 
     if (isSolved(updated)) {
+      console.log('Solved!');
       this.requestTransitionOut();
     }
   };
@@ -150,7 +151,7 @@ export default class Game extends React.Component {
                 teardown={
                   transitionState === State.requestTransitionOut
                 }
-                onMoveSquare={this.handlePressQuit}
+                onMoveSquare={this.handlePressSquare}
                 onTransitionOut={this.handleBoardTransitionOut}
                 onTransitionIn={this.handleBoardTransitionIn}
               />
